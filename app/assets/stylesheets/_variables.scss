@@ -1,0 +1,27 @@
+$black: hsl(0, 0%, 4%);
+$black-bis: hsl(0, 0%, 7%);
+$black-ter: hsl(0, 0%, 14%);
+
+$grey-darker: hsl(0, 0%, 21%);
+$grey-dark: hsl(0, 0%, 29%);
+$grey: hsl(0, 0%, 48%);
+$grey-light: hsl(0, 0%, 71%);
+$grey-lighter: hsl(0, 0%, 86%);
+
+$white-ter: hsl(0, 0%, 96%);
+$white-bis: hsl(0, 0%, 98%);
+$white: hsl(0, 0%, 100%);
+
+$orange: hsl(31, 86%, 64%);
+$yellow: hsl(55, 90%, 64%);
+$green: hsl(132, 51%, 52%);
+$turquoise: hsl(171, 70%, 48%);
+$cyan: hsl(186, 59%, 59%);
+$blue: hsl(245, 93%, 65%);
+$purple: hsl(263, 90%, 51%);
+$red: hsl(0, 92%, 69%);
+
+$body-background-color: $white-ter;
+$family-sans-serif: 'Montserrat', BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+$menu-item-hover-background-color: $grey-light;
+$table-row-hover-background-color: $grey-light;

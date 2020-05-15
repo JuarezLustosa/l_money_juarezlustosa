@@ -1,0 +1,15 @@
+development: &defaults
+  adapter: postgresql
+  encoding: utf8
+  url: postgresql://root:@localhost/juarezlustosa_development
+  pool: 4
+  reconnect: true
+  reaping_frequency: 10
+
+test:
+  <<: *defaults
+  url: postgresql://postgres@postgres/juarezlustosa_development_test
+
+production:
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 5 %>
