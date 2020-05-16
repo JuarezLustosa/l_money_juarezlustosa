@@ -6,18 +6,22 @@ ruby '2.7.0'
 # Rails
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'pg'
-gem 'puma', '~> 4.1'
+gem 'rails-observers'
+gem 'bootsnap', '>= 1.4.2', require: false
+gem 'unicorn'
 
 # Front
 gem 'sass-rails', '>= 6'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
+gem 'jquery-rails'
 
-gem 'bootsnap', '>= 1.4.2', require: false
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -35,10 +39,10 @@ group :test do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-rspec'
-  gem 'guard-rubocop'
-  gem 'shoulda-matchers', git:
-    'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers'
   gem 'simplecov', require: false
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
