@@ -1,0 +1,35 @@
+<header class="navbar is-dark has-background-grey">
+  <div class="container is-fluid">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../">
+        Juarez Lemmoney test
+      </a>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <nav class="navbar-menu">
+      <div class="navbar-end">
+        <div href="#" class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" aria-haspopup="true" aria-controls="dropdown-menu">
+            <span class="pad-rig-1 icon">
+              <i class="fas fa-user-circle"></i>
+            </span>
+            <span>Lemmoney</span>
+          </a>
+          <div class="navbar-dropdown">
+            <%= link_to admin_offers_path, class: "navbar-item" do %>
+              <span class="pad-rig-1 icon">
+                <i class="fas fa-cog"></i>
+              </span>
+              Admin Offers
+            <% end %>
+            <hr class="navbar-divider">
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
