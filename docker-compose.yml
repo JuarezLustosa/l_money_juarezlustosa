@@ -1,0 +1,42 @@
+version: '2'
+services:
+  webpacker:
+    build: .
+    environment:
+      - NODE_ENV=development
+      - RAILS_ENV=development
+      - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+    command: ./bin/webpack-dev-server
+    volumes:
+      - .:/webpacker-example-app
+    ports:
+      - '3035:3035'
+  web:
+    ports:
+      - "5005:8080"
+    build: .
+    command: unicorn_rails -c config/unicorn.conf
+    volumes:
+      - .:/juarezlustosa
+      - /usr/src/juarezlustosa/node_modules
+    depends_on:
+      - db
+      - webpacker
+    links:
+      - db
+    env_file:
+      - .env.docker
+    tty: true
+    stdin_open: true
+  db:
+    image: postgres:11.2
+    ports:
+      - "5434:5432"
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: semaphoredb
+      WEBPACKER_DEV_SERVER_HOST: webpacker
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
