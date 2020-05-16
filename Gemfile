@@ -8,7 +8,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'pg'
 gem 'rails-observers'
 gem 'bootsnap', '>= 1.4.2', require: false
-gem 'unicorn'
+gem 'puma'
 
 # Front
 gem 'sass-rails', '>= 6'
