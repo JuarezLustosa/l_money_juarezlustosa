@@ -1,0 +1,71 @@
+<div class="column is-9">
+  <div class="card">
+    <div class="card-header">
+      <p class="card-header-title">
+        <span class="fas fa-info mar-rig-1"></span>Offer
+      </p>
+    </div>
+    <div class="card-content">
+      <div class="content">
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <span class="title is-size-6">Name</span>
+          </div>
+          <div class="column is-half">
+            <%= @admin_offer.advertiser_name %>
+          </div>
+
+          <div class="column is-half">
+            <span class="title is-size-6">URL</span>
+          </div>
+          <div class="column is-half">
+            <%= @admin_offer.url %>
+          </div>
+
+          <div class="column is-half">
+            <span class="title is-size-6">description</span>
+          </div>
+          <div class="column is-half">
+            <%= @admin_offer.description %>
+          </div>
+
+          <div class="column is-half">
+            <span class="title is-size-6">Start At</span>
+          </div>
+          <div class="column is-half">
+            <%= @admin_offer.start_at %>
+          </div>
+
+          <div class="column is-half">
+            <span class="title is-size-6">Ends At</span>
+          </div>
+          <div class="column is-half">
+            <%= @admin_offer.ends_at %>
+          </div>
+
+          <div class="column is-half">
+            <span class="title is-size-6">Premium</span>
+          </div>
+          <div class="column is-half">
+            <%= @admin_offer.premium %>
+          </div>
+
+          <div class="column is-half">
+            <span class="title is-size-6">Status</span>
+          </div>
+          <div class="column is-half">
+            <span class="tag <%= status_color(@admin_offer) %>">
+              <%= @admin_offer.status %>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div class="card-footer-item">
+        <%= link_to 'Editar', edit_admin_offer_path(@admin_offer),
+          class: "has-text-primary has-text-weight-bold" %>
+      </div>
+    </div>
+  </div>
+</div>

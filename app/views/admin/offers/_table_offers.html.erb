@@ -1,0 +1,40 @@
+ <table class="table is-fullwidth is-hoverable">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Url</th>
+      <th>Description</th>
+      <th>Start at</th>
+      <th>Ends at</th>
+      <th>Premium</th>
+      <th>Status</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% admin_offers.each do |admin_offer| %>
+      <tr>
+        <td><%= admin_offer.advertiser_name %></td>
+        <td><%= admin_offer.url %></td>
+        <td><%= admin_offer.description.truncate(10) %></td>
+        <td><%= admin_offer.start_at %></td>
+        <td><%= admin_offer.ends_at %></td>
+        <td><%= admin_offer.premium %></td>
+        <td id='status'>
+          <%= render 'status_url_paths', admin_offer: admin_offer %>
+        </td>
+        <td>
+          <%= link_to edit_admin_offer_path(admin_offer) do %>
+            <span class="fas fa-pencil-alt has-text-dark"></span>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to admin_offer, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <span class="fas fa-trash has-text-dark"></span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

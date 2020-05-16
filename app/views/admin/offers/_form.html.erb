@@ -1,0 +1,60 @@
+<%= form_with(model: admin_offer, local: true) do |form| %>
+  <% if admin_offer.errors.any? %>
+     <div class="columns" id="error_explanation">
+      <div class="column">
+        <ul>
+        <% admin_offer.errors.full_messages.each do |message| %>
+          <li class="help is-danger"><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="columns is-multiline">
+    <div class="column is-half">
+      <div class="field">
+        <%= form.label :advertiser_name, class: "label" %>
+        <%= form.text_field :advertiser_name, class: "input" %>
+      </div>
+    </div>
+    <div class="column is-half">
+      <div class="field">
+        <%= form.label :url, class: "label" %>
+        <%= form.text_field :url, class: "input" %>
+      </div>
+    </div>
+    <div class="column is-half">
+      <div classs="field">
+        <%= form.label :description, class: "label" %>
+        <%= form.text_field :description, class: "textarea" %>
+      </div>
+    </div>
+    <div class="column is-half">
+      <div classs="field">
+        <%= form.label :start_at, class: "label" %>
+        <%= form.text_field :start_at, class: "input" %>
+      </div>
+    </div>
+    <div class="column is-half">
+      <div classs="field">
+        <%= form.label :ends_at, class: "label" %>
+        <%= form.text_field :ends_at, class: "input" %>
+      </div>
+    </div>
+  </div>
+  <div class="columns is-multiline">
+    <div class="column is-half">
+      <div classs="field">
+        <%= form.label :premium, class: "label" %>
+        <%= form.check_box :premium, class: "checkbox" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions has-text-right">
+    <!-- Internacionalizar -->
+    <%= form.submit 'Salvar', class: "button is-primary" %>
+    <%= link_to 'Voltar', admin_offers_path, class: "button is-dark" %>
+  </div>
+<% end %>

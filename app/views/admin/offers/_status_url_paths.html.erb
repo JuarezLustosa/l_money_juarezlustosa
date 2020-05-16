@@ -1,0 +1,5 @@
+<%= link_to switch_path_status(admin_offer), method: :post, remote: true do %>
+  <span class="tag <%= status_color(admin_offer) %>">
+    <%= admin_offer.status %>
+  </span>
+<% end %>

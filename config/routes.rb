@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
-  resources :offers
+  namespace :admin do
+    resources :offers do
+      post :disabled
+      post :enabled
+    end
+  end
   root 'home#index'
 end
