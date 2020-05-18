@@ -1,7 +1,6 @@
 class Admin::Offer < ApplicationRecord
   validates :advertiser_name, :description, :start_at, presence: true
   validates :description, length: {  maximum: 500 }
-
   validates :url, format: URI::regexp(%w[http https])
 
   enum status: { enabled: 'enabled', disabled: 'disabled' }

@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe 'Admin::Offers', type: :request do
   let(:params) { build(:admin_offer).attributes }
+  let(:invalid_params) { { description: nil, start_at: nil } }
   let!(:offer) { create(:admin_offer) }
 
   context 'GET #index' do
@@ -40,6 +41,12 @@ describe 'Admin::Offers', type: :request do
       expect(response).to have_http_status(:redirect)
       expect(flash[:notice]).to eq('Offer was successfully updated.')
     end
+
+    it 'render edit again on failure' do
+      put admin_offer_path(offer, admin_offer: invalid_params)
+
+      expect(response).to be_successful
+    end
   end
 
   describe 'POST #create' do
@@ -54,10 +61,9 @@ describe 'Admin::Offers', type: :request do
     end
 
     it 'renders #new again on failure, with notice' do
-      post admin_offers_path(admin_offer: params.merge(description: nil))
-      expect(response).to have_http_status(:redirect)
-      expect(response).to redirect_to(admin_offers_path)
-      expect(response).to_not render_template(:index)
+      post admin_offers_path(admin_offer: invalid_params)
+
+      expect(response).to be_successful
     end
   end
 

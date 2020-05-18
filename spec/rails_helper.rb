@@ -1,4 +1,9 @@
 require 'spec_helper'
+require 'simplecov'
+
+SimpleCov.start 'rails'
+SimpleCov.minimum_coverage 94
+SimpleCov.refuse_coverage_drop
 
 ENV['RAILS_ENV'] ||= 'test'
 

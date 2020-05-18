@@ -1,6 +1,6 @@
 class Admin::OffersController < ApplicationController
   before_action :set_admin_offer,
-    only: [:show, :edit, :update, :destroy]
+    only: [:show, :edit, :update, :destroy, :disabled, :enabled]
 
   def index
     @admin_offers = Admin::Offer.all
@@ -19,63 +19,52 @@ class Admin::OffersController < ApplicationController
   def create
     @admin_offer = Admin::Offer.new(admin_offer_params)
 
-    respond_to do |format|
-      if @admin_offer.save
-        format.html { redirect_to admin_offers_path, notice: 'Offer was successfully created.' }
-        format.json { render :show, status: :created, location: @admin_offer }
-      else
-        format.html { render :new }
-        format.json { render json: @admin_offer.errors, status: :unprocessable_entity }
-      end
+    if @admin_offer.save
+      redirect_to_index_on_success('created.')
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @admin_offer.update(admin_offer_params)
-        format.html { redirect_to admin_offers_path, notice: 'Offer was successfully updated.' }
-        format.json { render :show, status: :ok, location: @admin_offer }
-      else
-        format.html { render :edit }
-        format.json { render json: @admin_offer.errors, status: :unprocessable_entity }
-      end
+    if @admin_offer.update(admin_offer_params)
+      redirect_to_index_on_success('updated.')
+    else
+      render :edit
     end
   end
 
   def destroy
     @admin_offer.destroy
-    respond_to do |format|
-      format.html { redirect_to admin_offers_url, notice: 'Offer was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to_index_on_success('destroyed.')
   end
 
   def disabled
-    @admin_offer = Admin::Offer.find_by(id: params[:offer_id])
     @admin_offer.disabled!
 
-    respond_to do |format|
-      format.js
-    end
+    respond_to :js
   end
 
   def enabled
-    @admin_offer = Admin::Offer.find_by(id: params[:offer_id])
     @admin_offer.enabled!
 
-    respond_to do |format|
-      format.js
-    end
+    respond_to :js
   end
 
   private
-    def set_admin_offer
-      @admin_offer = Admin::Offer.find(params[:id])
-    end
 
-    def admin_offer_params
-      params.require(:admin_offer).permit(
-        :advertiser_name, :url, :description, :start_at, :ends_at, :premium
-      )
-    end
+  def redirect_to_index_on_success(message_action)
+    flash[:notice] = "Offer was successfully #{message_action}"
+    redirect_to admin_offers_path
+  end
+
+  def set_admin_offer
+    @admin_offer = Admin::Offer.find(params[:id] || params[:offer_id])
+  end
+
+  def admin_offer_params
+    params.require(:admin_offer).permit(
+      :advertiser_name, :url, :description, :start_at, :ends_at, :premium
+    )
+  end
 end
